@@ -36,3 +36,4 @@ xlrd==2.0.1
 xlsconv==2.0.0
 zipp==3.17.0
 drf_yasg==1.21.7
+mysqlclient==2.2.1
