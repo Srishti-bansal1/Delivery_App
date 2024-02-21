@@ -40,10 +40,9 @@ INSTALLED_APPS = [
     "django.contrib.messages",
     "django.contrib.staticfiles", # required for serving swagger ui's css/js files
     "DlvryApp",
-   'drf_yasg',
-
-    
-    
+    'drf_yasg',
+    'rest_framework',
+    'rest_framework_simplejwt',
 ]
 
 MIDDLEWARE = [
@@ -58,10 +57,11 @@ MIDDLEWARE = [
 
 ROOT_URLCONF = "DlvryPro.urls"
 
+TEMPLATE_DIR = os.path.join(BASE_DIR,"templates")
 TEMPLATES = [
     {
         "BACKEND": "django.template.backends.django.DjangoTemplates",
-        "DIRS": [],
+        "DIRS": [TEMPLATE_DIR],
         "APP_DIRS": True,
         "OPTIONS": {
             "context_processors": [
@@ -139,3 +139,9 @@ MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
 
 # URL used to access the media
 MEDIA_URL = '/media/'
+
+SIMPLE_JWT = {
+  # It will work instead of the default serializer(TokenObtainPairSerializer).
+  "TOKEN_OBTAIN_SERIALIZER": "my_app.serializers.MyTokenObtainPairSerializer",
+  # ...
+}

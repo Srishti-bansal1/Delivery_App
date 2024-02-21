@@ -5,7 +5,13 @@ from enum import Enum
 class ItemType(Enum):
     perishable = "PERISHABLE"
     non_perishable = "NON-PERISHABLE"
-    
+
+class SignUpModel(models.Model):
+    name = models.CharField(max_length = 100)
+    email = models.EmailField()
+    password = models.CharField(max_length = 100)
+    address = models.CharField(max_length = 100 ) 
+   
 class Organization(models.Model):
     org_id = models.CharField(max_length = 100)
     org_name = models.CharField(max_length = 100)

@@ -1,5 +1,15 @@
-from .models import  Organization, Item, Pricing 
+from .models import  Organization, Item, Pricing, SignUpModel
 from rest_framework import serializers
+
+class SignupSerializer(serializers.ModelSerializer):
+    class Meta :
+        model = SignUpModel
+        fields = ('__all__')
+
+class LoginSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = SignUpModel
+        fields = ('__all__')
 
 class OrganizationSerializer(serializers.ModelSerializer):
     class Meta :

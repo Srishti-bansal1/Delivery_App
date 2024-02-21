@@ -17,7 +17,8 @@ Including another URLconf
 from django.contrib import admin
 from django.urls import path, include
 from rest_framework.routers import DefaultRouter
-from DlvryApp.views import OrganizationViewSet, ItemViewSet, PricingViewSet ,TotalPrice
+from DlvryApp import views
+from DlvryApp.views import OrganizationViewSet, ItemViewSet, PricingViewSet ,TotalPrice, SignupViewSet, LoginVeiwSet
 
 from rest_framework import permissions
 from drf_yasg.views import get_schema_view
@@ -42,9 +43,14 @@ router.register(r'org',OrganizationViewSet, basename='org')
 router.register(r'item',ItemViewSet, basename='item')
 router.register(r'price',PricingViewSet, basename='price')
 router.register(r'totalprice',TotalPrice, basename='totalprice')
+router.register(r'signup', SignupViewSet, basename= 'signup')
+router.register(r'login', LoginVeiwSet, basename= 'login')
 
 urlpatterns = [
     path("admin/", admin.site.urls),
     path("delivery/", include(router.urls)),
-    path('swagger/', schema_view.with_ui('swagger', cache_timeout=0), name='schema-swagger-ui')
+    path('swagger/', schema_view.with_ui('swagger', cache_timeout=0), name='schema-swagger-ui'),
+    path('Signup_Page',views.SignUp, name='signup-page' ),
+    path('login_Page',views.Login, name='login-page' ),
+    path('resetpassword',views.Reset, name='reset-password' )
 ]
