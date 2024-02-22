@@ -11,6 +11,11 @@ class SignUpModel(models.Model):
     email = models.EmailField()
     password = models.CharField(max_length = 100)
     address = models.CharField(max_length = 100 ) 
+
+    class Meta:
+        constraints = [
+            models.UniqueConstraint(fields=['email'], name='unique_email')
+        ]
    
 class Organization(models.Model):
     org_id = models.CharField(max_length = 100)

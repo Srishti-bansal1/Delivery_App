@@ -51,7 +51,7 @@ class SignupViewSet(viewsets.ModelViewSet):
     def remove_user(self,request,pk=None):
         queryset = SignUpModel.objects.get(pk=pk)  
         queryset.delete()
-        return Response(status=status.HTTP_202_ACCEPTED)
+        return Response({'message':'data is delete'},status=status.HTTP_202_ACCEPTED)
     
 class LoginVeiwSet(viewsets.ModelViewSet):
 
